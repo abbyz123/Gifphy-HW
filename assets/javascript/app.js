@@ -26,6 +26,7 @@ function createButtons() {
                 $("#main").empty();
                 for (i = 0; i < response.data.length; i++) {
                     console.log(response.data[i]);
+                    // fetch animate and still gif images
                     let imageURLAnimate = response.data[i].images.fixed_height.url;
                     let imageURLStill = response.data[i].images.fixed_height_still.url;
                     let gifImage = $("<img>");
@@ -35,6 +36,8 @@ function createButtons() {
                     gifImage.attr("data-state", "still");
                     gifImage.attr("alt", buttonText);
                     gifImage.attr("class", "gif");
+                    gifImage.addClass("marginTop10px marginRight10px");
+                    // add event handler for each button
                     gifImage.on("click", function () {
                         console.log("gif clicked");
                         //console.log($(this));
@@ -51,6 +54,7 @@ function createButtons() {
                         }
                         $(this).attr("data-state", state);
                     })
+                    // append the gif to the main gif area
                     $("#main").append(gifImage);
                 }
             });
@@ -61,7 +65,7 @@ function createButtons() {
 // start of jquery
 $(document).ready(function () {
     createButtons();
-    
+    $("#mainrow").addClass("marginTop10px");
     $("button[id='submit']").on("click", function (event) {
         event.preventDefault();
         event.stopPropagation();
