@@ -4,9 +4,9 @@ let keyWords = ["kitty", "puppy", "bird", "fish", "piggy"];
 $(document).ready(function() {
     // create buttons
     for (i = 0; i < keyWords.length; i++) {
-        console.log("add something");
-        addStr = '<button id="' + keyWords[i] + '">' + keyWords[i] + '</button>';
-        console.log(addStr);
         $("#buttonsshow").append('<button id="' + keyWords[i] + '">' + keyWords[i] + '</button>');
     }
+    $("#buttonsshow>*").each(function(){
+        $(this).css('margin-right','10px');
+    })
 }); 
