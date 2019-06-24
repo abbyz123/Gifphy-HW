@@ -74,7 +74,7 @@ $(document).ready(function () {
         if (false === keyWords.includes(newKeyword, 0)) {
             keyWords.push(newKeyword);
         } else {
-            alert("The keyword " + newKeyword + "is already in the list!");
+            alert("The keyword " + newKeyword + " is already in the list!");
         }
         createButtons();
     })
