@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8">
     <title>Gifphy Gateway</title>
@@ -9,12 +10,23 @@
     <script src="assets/javascript/app.js"></script>
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
+
 <body>
-  <div class="container" id="buttonsshow"></div>
-  <div class="row" id="mainrow">
-      <div class="col-md-8" id="main"></div>
-      <div class="col-md-4" id="searcharea"></div>
-  </div>
+    <div class="container" id="buttonsshow"></div>
+    <div class="row" id="mainrow">
+        <div class="col-md-8" id="main"></div>
+        <div class="col-md-4" id="searcharea">
+            <form>
+                <div class="form-group">
+                    <label for="newKeyword">Add new keyword</label>
+                    <input type="text" class="form-control" id="newKeyword" aria-describedby="newKeywordHelp"
+                        placeholder="new keyword...">
+                    <small id="newKeywordHelp" class="form-text text-muted">Type your new keyword here</small>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
 </body>
 
 </html>
