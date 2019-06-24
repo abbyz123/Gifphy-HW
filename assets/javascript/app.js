@@ -12,16 +12,11 @@ function createButtons() {
         $("#buttonsshow").append(newButton);
     }
     $("#buttonsshow>*").each(function () {
+        //$(this).unbind("click");
         $(this).css('margin-right', '10px');
     })
-}
-
-// start of jquery
-$(document).ready(function () {
-    createButtons();
     $("#buttonsshow>*").each(function () {
-        $(this).on('click', function (event) {
-            console.log("click " + this.id);
+        $(this).on('click', function () {
             let queryURL = "https://api.giphy.com/v1/gifs/search?api_key=BkaUZZWcFij6J7AoQj3WtPb1R2p9O6V9&q=" + $(this).text() + "&limit=" + gifLimit + "&rating=" + rating;
             let buttonText = $(this).text();
             $.ajax({
@@ -59,17 +54,21 @@ $(document).ready(function () {
                     $("#main").append(gifImage);
                 }
             });
-            return true;
         });
     })
+}
 
+// start of jquery
+$(document).ready(function () {
+    createButtons();
+    
     $("button[id='submit']").on("click", function (event) {
+        event.preventDefault();
         event.stopPropagation();
         let newKeyword = $("input[id='newKeyword']").val().trim();
         if (false === keyWords.includes(newKeyword, 0)) {
             keyWords.push(newKeyword);
         }
         createButtons();
-        //event.preventDefault();
     })
 }); 
