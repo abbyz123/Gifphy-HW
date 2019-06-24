@@ -1,4 +1,5 @@
-let keyWords = ["kitty", "puppy", "bird", "fish", "piggy"];
+let keyWords = ["kitty", "puppy", "bird", "fish", "piggy", "laugh", "happy", "monster", "batman", 
+                "joker", "avenger", "dream", "icecream", "guitar", "music"];
 let gifLimit = 10;
 let rating = "g";
 
@@ -72,6 +73,8 @@ $(document).ready(function () {
         let newKeyword = $("input[id='newKeyword']").val().trim();
         if (false === keyWords.includes(newKeyword, 0)) {
             keyWords.push(newKeyword);
+        } else {
+            alert("The keyword " + newKeyword + "is already in the list!");
         }
         createButtons();
     })
