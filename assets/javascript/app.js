@@ -18,7 +18,7 @@ function createButtons() {
     })
     $("#buttonsshow>*").each(function () {
         $(this).on('click', function () {
-            let queryURL = "https://api.giphy.com/v1/gifs/search?api_key=BkaUZZWcFij6J7AoQj3WtPb1R2p9O6V9&q=" + $(this).text() + "&limit=" + gifLimit + "&rating=" + rating;
+            let queryURL = "https://api.giphy.com/v1/gifs/search?api_key=BkaUZZWcFij6J7AoQj3WtPb1R2p9O6V9&q=" + $(this).text() + "&limit=" + gifLimit;
             let buttonText = $(this).text();
             $.ajax({
                 url: queryURL,
@@ -27,6 +27,13 @@ function createButtons() {
                 $("#main").empty();
                 for (i = 0; i < response.data.length; i++) {
                     console.log(response.data[i]);
+                    // create an element 
+                    let imagesDiv = $("<div>");
+                    let imagesRating = response.data[i].rating;
+                    let pRating =$("<p>");
+                    pRating.text("Rating: " + imagesRating);
+                    imagesDiv.append(pRating);
+
                     // fetch animate and still gif images
                     let imageURLAnimate = response.data[i].images.fixed_height.url;
                     let imageURLStill = response.data[i].images.fixed_height_still.url;
@@ -56,7 +63,8 @@ function createButtons() {
                         $(this).attr("data-state", state);
                     })
                     // append the gif to the main gif area
-                    $("#main").append(gifImage);
+                    imagesDiv.append(gifImage);
+                    $("#main").append(imagesDiv);
                 }
             });
         });
